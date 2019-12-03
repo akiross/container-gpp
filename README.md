@@ -21,7 +21,7 @@ The container has gpp as entrypoint, so you can pass flags as cmd arguments:
 You can pipe to it a file (make sure you're using `-i` docker flag) to get
 processed output:
 
-    $ cat <<EOF | podman run -i --rm container-gpp:0.1.1 
+    $ cat <<EOF | podman run -i --rm akiross/container-gpp:0.1.1 
     pipe heredoc> Hello
     pipe heredoc> #ifdef WRITE
     pipe heredoc> World
