@@ -11,4 +11,8 @@ RUN apk update && \
     cp src/gpp /usr/bin/ && \
     apk del gpp-build-deps
 
-CMD ["/usr/bin/gpp"]
+# Use GPP as entry point
+ENTRYPOINT ["/usr/bin/gpp"]
+
+# And specify parameters as cmd
+CMD []

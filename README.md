@@ -11,3 +11,23 @@ To build the container image using podman:
 Or, if you're still using docker:
 
     # docker build -t container-gpp:0.1.0 .
+
+The container has gpp as entrypoint, so you can pass flags as cmd arguments:
+
+    $ podman run -it --rm container-gpp:0.1.0 --help
+    Usage : gpp [-{o|O} outfile] [-I/include/path] [-Dname=val ...] [-z] [-x] [-m]
+    ...
+
+You can pipe to it a file (make sure you're using `-i` docker flag) to get
+processed output:
+
+    $ cat <<EOF | podman run -i --rm container-gpp:0.1.0 
+    pipe heredoc> Hello
+    pipe heredoc> #ifdef WRITE
+    pipe heredoc> World
+    pipe heredoc> #else
+    pipe heredoc> All
+    pipe heredoc> #endif
+    pipe heredoc> EOF
+    Hello
+    All
